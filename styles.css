@@ -1,5 +1,9 @@
 /*=== Reset ===*/
 
+* {
+  box-sizing: border-box;
+}
+
 html, body, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
@@ -93,8 +97,8 @@ body {
   .hamburger-icon {
     width: 25px;
     position: absolute;
-    left: 0;
-    padding: 10px;
+    left: 2%;
+    top: 25%;
   }
 
   .header-text {
