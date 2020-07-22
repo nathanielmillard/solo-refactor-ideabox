@@ -81,6 +81,116 @@ body {
   padding: 10px;
 }
 
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  grid-row-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.title-label {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.body-label {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.idea-form-title {
+  grid-row: 2;
+  grid-column: 1;
+  border: 1px solid #7676B6;
+  border-radius: 2px;
+}
+
+.idea-form-body {
+  grid-row: 4 / 6;
+  grid-column: 1;
+  border: 1px solid #7676B6;
+  border-radius: 2px;
+}
+
+.idea-form-button {
+  grid-row: 6;
+  grid-column: 1;
+  border: 1px solid #7676B6;
+  border-radius: 2px;
+  color: #E9E9F3;
+  background-color: #353567;
+  height: 30px;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-icon {
+  width: 10%;
+  padding: 5px;
+  background-color: #353567;
+  border: 1px solid #7676B6;
+  border-right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+.search-input {
+  border: 1px solid #7676B6;
+  border-left: 0;
+  font-size: 0.6rem;
+  border-radius: 0 2px 2px 0;
+  width: 100%;
+  padding: 3px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.idea-card {
+  border: 1px solid #6E646B;
+  margin-bottom: 15px;
+}
+
+.idea-card-header {
+  padding: 5px;
+  background-color: #201F3D;
+  display: flex;
+  justify-content: space-between;
+}
+
+.idea-card img {
+  width: 10%;
+}
+
+.idea-card-body {
+  padding: 10px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #6E646B;
+  border-top: 1px solid #6E646B;
+}
+
+.idea-card-body p {
+  color: #1f1f3D;
+}
+
+.idea-title {
+  margin-bottom: 10px;
+}
+
+.idea-card-footer {
+  background-color: #5356A4;
+  color: #FFFFFF;
+  display: flex;
+}
+
+.idea-card-footer p {
+  font-size: 0.6rem;
+  align-self: center;
+}
+
 /*=== media queries ===*/
 
 @media only screen and (max-width: 400px) {
@@ -116,115 +226,5 @@ body {
   .idea-form {
     flex-grow: 1;
     padding: 15px 10px;
-  }
-
-  form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
-    grid-row-gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .title-label {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  .body-label {
-    grid-row: 3;
-    grid-column: 1;
-  }
-
-  .idea-form-title {
-    grid-row: 2;
-    grid-column: 1;
-    border: 1px solid #7676B6;
-    border-radius: 2px;
-  }
-
-  .idea-form-body {
-    grid-row: 4 / 6;
-    grid-column: 1;
-    border: 1px solid #7676B6;
-    border-radius: 2px;
-  }
-
-  .idea-form-button {
-    grid-row: 6;
-    grid-column: 1;
-    border: 1px solid #7676B6;
-    border-radius: 2px;
-    color: #E9E9F3;
-    background-color: #353567;
-    height: 30px;
-  }
-
-  .search-bar {
-    display: flex;
-  }
-
-  .search-icon {
-    width: 10%;
-    padding: 5px;
-    background-color: #353567;
-    border: 1px solid #7676B6;
-    border-right: 0;
-    border-radius: 2px 0 0 2px;
-  }
-
-  .search-input {
-    border: 1px solid #7676B6;
-    border-left: 0;
-    font-size: 0.6rem;
-    border-radius: 0 2px 2px 0;
-    width: 100%;
-    padding: 3px;
-  }
-
-  .search-input:focus {
-    outline: none;
-  }
-
-  .idea-card {
-    border: 1px solid #6E646B;
-    margin-bottom: 15px;
-  }
-
-  .idea-card-header {
-    padding: 5px;
-    background-color: #201F3D;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .idea-card img {
-    width: 10%;
-  }
-
-  .idea-card-body {
-    padding: 10px;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #6E646B;
-    border-top: 1px solid #6E646B;
-  }
-
-  .idea-card-body p {
-    color: #1f1f3D;
-  }
-
-  .idea-title {
-    margin-bottom: 10px;
-  }
-
-  .idea-card-footer {
-    background-color: #5356A4;
-    color: #FFFFFF;
-    display: flex;
-  }
-
-  .idea-card-footer p {
-    font-size: 0.6rem;
-    align-self: center;
   }
 }
