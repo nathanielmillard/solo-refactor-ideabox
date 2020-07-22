@@ -123,7 +123,9 @@ body {
 }
 
 .idea-form {
-  flex-grow: 2;
+  //keep an eye on the flex grow.
+  //can we have 0 and still fit formatting?
+  flex-grow: 0;
 }
 
 .idea-cards {
@@ -140,7 +142,6 @@ form {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
-  grid-row-gap: 10px;
   margin-bottom: 10px;
   width: 60%;
   margin: auto;
@@ -149,11 +150,13 @@ form {
 .title-label {
   grid-row: 1;
   grid-column: 1;
+  margin-bottom: 2px;
 }
 
 .body-label {
   grid-row: 3;
   grid-column: 1;
+  margin-bottom: 2px;
 }
 
 .idea-form-title {
@@ -178,6 +181,7 @@ form {
   color: #E9E9F3;
   background-color: #353567;
   height: 30px;
+  margin-top: 10px;
 }
 
 .search-bar {
@@ -299,6 +303,8 @@ form {
   .starred-ideas {
     padding: 10px;
     color: #A9AAD2;
+    border-top: 0;
+    border-bottom: 0;
   }
 
   .starred-ideas-text {
@@ -323,6 +329,11 @@ form {
   .idea-form {
     flex-grow: 1;
     padding: 15px 10px;
+  }
+
+  .idea-cards {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
   }
   form {
     margin: 0;
