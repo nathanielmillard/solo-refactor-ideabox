@@ -70,6 +70,10 @@ body {
   display: none;
 }
 
+.menu-dropdown {
+  height: auto;
+}
+
 .starred-ideas {
   padding: 10px;
   border-bottom: 1px solid #5356A4;
@@ -125,6 +129,11 @@ body {
 .idea-cards {
   flex-grow: 3;
   padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  align-content: start;
 }
 
 form {
