@@ -133,6 +133,8 @@ form {
   grid-template-rows: repeat(6, 1fr);
   grid-row-gap: 10px;
   margin-bottom: 10px;
+  width: 60%;
+  margin: auto;
 }
 
 .title-label {
@@ -171,6 +173,8 @@ form {
 
 .search-bar {
   display: flex;
+  margin: 10px auto;
+  width: 60%;
 }
 
 .search-icon {
@@ -310,5 +314,9 @@ form {
   .idea-form {
     flex-grow: 1;
     padding: 15px 10px;
+  }
+  form {
+    margin: 0;
+    width: 100%;
   }
 }
