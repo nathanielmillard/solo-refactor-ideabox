@@ -78,6 +78,7 @@ body {
 
 .idea-cards {
   flex-grow: 3;
+  padding: 10px;
 }
 
 /*=== media queries ===*/
@@ -183,5 +184,47 @@ body {
 
   .search-input:focus {
     outline: none;
+  }
+
+  .idea-card {
+    border: 1px solid #6E646B;
+    margin-bottom: 15px;
+  }
+
+  .idea-card-header {
+    padding: 5px;
+    background-color: #201F3D;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .idea-card img {
+    width: 10%;
+  }
+
+  .idea-card-body {
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #6E646B;
+    border-top: 1px solid #6E646B;
+  }
+
+  .idea-card-body p {
+    color: #1f1f3D;
+  }
+
+  .idea-title {
+    margin-bottom: 10px;
+  }
+
+  .idea-card-footer {
+    background-color: #5356A4;
+    color: #FFFFFF;
+    display: flex;
+  }
+
+  .idea-card-footer p {
+    font-size: 0.6rem;
+    align-self: center;
   }
 }
