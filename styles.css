@@ -17,6 +17,10 @@ body {
   display: flex;
 }
 
+.hidden {
+  display: none!important;
+}
+
 /*=== Background Colors ===*/
 
 .purple-1 {
@@ -64,7 +68,20 @@ body {
   width: 380px;
 }
 
+.starred-ideas {
+  padding: 10px;
+}
+
 /*=== main section ===*/
+
+.blanket {
+  height: 230%;
+  width: 100%;
+  z-index: 3;
+  position: absolute;
+  background-color: #686872;
+  opacity: 0.7;
+}
 
 .ideas {
   display: flex;
@@ -155,7 +172,6 @@ form {
 }
 
 .idea-card-header {
-  padding: 5px;
   background-color: #201F3D;
   display: flex;
   justify-content: space-between;
@@ -203,7 +219,7 @@ form {
     padding: 10px;
   }
 
-  .menu {
+  .menu, .menu-dropdown {
     height: 40px;
     text-align: center;
     width: 100%;
@@ -212,11 +228,49 @@ form {
     justify-content: center;
   }
 
+  .menu-dropdown {
+    height: 110px;
+    z-index: 5;
+    position: absolute;
+    flex-direction: column;
+  }
+
+  .menu-dropdown p {
+    text-align: left;
+  }
+
   .hamburger-icon {
     width: 25px;
     position: absolute;
     left: 2%;
     top: 25%;
+  }
+
+  .menu-close-icon {
+    width: 25px;
+    position: absolute;
+    left: 2%;
+    top: 7%;
+  }
+
+  .starred-ideas {
+    padding: 10px;
+    color: #A9AAD2;
+  }
+
+  .starred-ideas-text {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 0.6rem;
+    letter-spacing: 0.2px;
+    margin-bottom: 15px;
+  }
+
+  .show-starred-ideas {
+    width: 100%;
+    color: white;
+    border: 1px solid #1F1F3D;
+    border-radius: 2px;
   }
 
   .header-text {
