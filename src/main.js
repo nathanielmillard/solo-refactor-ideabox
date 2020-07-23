@@ -3,15 +3,26 @@ var body = document.querySelector('body');
 var inputTitle = document.querySelector('.idea-form-title');
 var inputBody = document.querySelector('.idea-form-body');
 var ideaCardsGrid = document.querySelector('.idea-cards');
+var ideaForm = document.querySelector('form');
+var saveButton = document.querySelector('.idea-form-button');
+
 var list = [];
 //eventlisteners
 body.addEventListener('click', clickHandler);
+body.addEventListener('keyup', keyupHandler);
+window.onload = disableEnableButton();
 //functions
 function clickHandler(event){
-    if(event.target.className === 'idea-form-button'){
+    if(event.target.classList.contains('idea-form-button')){
       saveIdea();
     }
-}
+};
+
+function keyupHandler(event){
+  if(event.target === inputTitle || event.target === inputBody){
+    disableEnableButton();
+  }
+};
 
 function saveIdea(){
   event.preventDefault();
@@ -19,6 +30,8 @@ function saveIdea(){
   list.push(currentIdea);
   displayIdeaCards();
   console.log(list);
+  ideaForm.reset();
+  disableEnableButton();
 }
 
 function displayIdeaCards(){
@@ -47,3 +60,13 @@ function displayIdeaCards(){
     ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
   }
 }
+
+function disableEnableButton(){
+  if (inputTitle.value !== '' && inputBody.value !== ''){
+    saveButton.disabled = false;
+    saveButton.classList.add('buttonEnabled');
+  } else {
+    saveButton.disabled = true;
+    saveButton.classList.remove('buttonEnabled');
+  }
+};
