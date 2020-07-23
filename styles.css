@@ -179,9 +179,14 @@ form {
   border: 1px solid #7676B6;
   border-radius: 2px;
   color: #E9E9F3;
-  background-color: #353567;
+  background-color: #A9AAD2;
   height: 80%;
   margin-top: 10px;
+}
+
+.buttonEnabled {
+  background-color: #353567;
+  cursor: pointer;
 }
 
 .search-bar {
