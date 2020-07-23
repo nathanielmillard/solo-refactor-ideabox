@@ -109,7 +109,7 @@ body {
 /*=== main section ===*/
 
 .blanket {
-  height: 230%;
+  height: 100%;
   width: 100%;
   z-index: 3;
   position: absolute;
@@ -135,6 +135,7 @@ body {
   grid-auto-rows: auto;
   grid-gap: 1.5%;
   align-content: start;
+  overflow: auto;
 }
 
 form {
@@ -342,7 +343,6 @@ form {
 
   .idea-cards {
     grid-template-columns: 1fr;
-    grid-gap: 3%;
   }
 
   .search-bar {
