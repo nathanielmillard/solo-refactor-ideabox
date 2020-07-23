@@ -46,7 +46,8 @@ body {
   color: #EAEAF4;
   font-family: 'Open Sans';
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
+  font-size: 0.8rem;
 }
 
 .body-text {
@@ -65,13 +66,45 @@ body {
 
 .menu {
   height: 100%;
-  width: 380px;
+  width: auto;
+  display: none;
+}
+
+.menu-dropdown {
+  height: auto;
 }
 
 .starred-ideas {
   padding: 10px;
+  border-bottom: 1px solid #5356A4;
+  border-top: 1px solid #5356A4;
 }
 
+.hamburger-icon {
+  display: none;
+}
+
+.menu-close-icon {
+  display: none;
+}
+
+.starred-ideas-text {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 0.6rem;
+  color: #A9AAD2;
+  letter-spacing: 0.2px;
+  margin-bottom: 15px;
+}
+
+.show-starred-ideas {
+  height: 25px;
+  width: 100%;
+  color: white;
+  border: 1px solid #353567;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
 /*=== main section ===*/
 
 .blanket {
@@ -90,30 +123,40 @@ body {
 }
 
 .idea-form {
-  flex-grow: 2;
+  //keep an eye on the flex grow.
+  //can we have 0 and still fit formatting?
+  flex-grow: 0;
 }
 
 .idea-cards {
   flex-grow: 3;
   padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  align-content: start;
 }
 
 form {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
-  grid-row-gap: 10px;
   margin-bottom: 10px;
+  width: 60%;
+  margin: auto;
 }
 
 .title-label {
   grid-row: 1;
   grid-column: 1;
+  margin-bottom: 2px;
 }
 
 .body-label {
   grid-row: 3;
   grid-column: 1;
+  margin-bottom: 2px;
 }
 
 .idea-form-title {
@@ -138,10 +181,13 @@ form {
   color: #E9E9F3;
   background-color: #353567;
   height: 30px;
+  margin-top: 10px;
 }
 
 .search-bar {
   display: flex;
+  margin: 10px auto;
+  width: 60%;
 }
 
 .search-icon {
@@ -244,9 +290,11 @@ form {
     position: absolute;
     left: 2%;
     top: 25%;
+    display: block;
   }
 
   .menu-close-icon {
+    display: block;
     width: 25px;
     position: absolute;
     left: 2%;
@@ -256,6 +304,8 @@ form {
   .starred-ideas {
     padding: 10px;
     color: #A9AAD2;
+    border-top: 0;
+    border-bottom: 0;
   }
 
   .starred-ideas-text {
@@ -269,7 +319,7 @@ form {
   .show-starred-ideas {
     width: 100%;
     color: white;
-    border: 1px solid #1F1F3D;
+    border: 1px solid #353567;
     border-radius: 2px;
   }
 
@@ -280,5 +330,19 @@ form {
   .idea-form {
     flex-grow: 1;
     padding: 15px 10px;
+  }
+
+  .idea-cards {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  form {
+    margin: 0;
+    width: 100%;
   }
 }

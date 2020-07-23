@@ -3,13 +3,14 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open%20Sans" rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body class="purple-1">
     <section class="menu purple-4">
       <img class="hamburger-icon" src="./src/icons/menu.svg" alt="Hamburger Menu Icon">
       <h1 class="header-text">IdeaBox</h1>
     </section>
-    <section class="menu-dropdown purple-4 hidden">
+    <section class="menu-dropdown purple-4">
       <img class="menu-close-icon" src="./src/icons/menu-close.svg" alt="Hamburger Menu Icon">
       <h1 class="header-text">IdeaBox</h1>
       <section class="starred-ideas">
@@ -24,7 +25,7 @@
           <label class="title-label" for="title">Title</label>
           <input class="idea-form-title" type="text" name="title">
           <label class="body-label" for="body">Body</label>
-          <input class="idea-form-body" type="text" name="body">
+          <textarea class="idea-form-body"rows="5" style="resize:none"></textarea>
           <button class="idea-form-button">Save</button>
         </form>
         <section class="search-bar">
