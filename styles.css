@@ -290,6 +290,7 @@ form {
     position: absolute;
     left: 2%;
     top: 25%;
+    display: block;
   }
 
   .menu-close-icon {
@@ -335,6 +336,11 @@ form {
     grid-template-columns: 1fr;
     grid-gap: 0;
   }
+
+  .search-bar {
+    width: 100%;
+  }
+
   form {
     margin: 0;
     width: 100%;
