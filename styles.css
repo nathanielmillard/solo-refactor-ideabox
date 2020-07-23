@@ -213,6 +213,7 @@ form {
 
 .idea-card {
   border: 1px solid #6E646B;
+  min-width: 110px;
 }
 
 .idea-card-header {
@@ -253,7 +254,16 @@ form {
 
 /*=== media queries ===*/
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 720px){
+  .idea-cards{
+    grid-template-columns: 1fr 1fr;
+  }
+  .menu-dropdown{
+    min-width: 156px;
+  }
+}
+
+@media only screen and (max-width: 415px) {
   body {
     flex-direction: column;
   }
