@@ -46,12 +46,12 @@ body {
   color: #EAEAF4;
   font-family: 'Open Sans';
   font-weight: bold;
-  padding: 10px;
+  padding: 5%;
   font-size: 0.8rem;
 }
 
 .body-text {
-  font: lighter 0.8rem 'Open Sans';
+  font: 300 0.8rem 'Open Sans';
 }
 
 .title-label, .body-label {
@@ -67,11 +67,12 @@ body {
 .menu {
   height: 100%;
   width: auto;
-  display: none;
+  /* display: none; */
 }
 
 .menu-dropdown {
   height: auto;
+  width: 20%;
 }
 
 .starred-ideas {
@@ -94,11 +95,11 @@ body {
   font-size: 0.6rem;
   color: #A9AAD2;
   letter-spacing: 0.2px;
-  margin-bottom: 15px;
+  margin-bottom: 6%;
 }
 
 .show-starred-ideas {
-  height: 25px;
+  height: 1.9rem;
   width: 100%;
   color: white;
   border: 1px solid #353567;
@@ -107,14 +108,6 @@ body {
 }
 /*=== main section ===*/
 
-.blanket {
-  height: 230%;
-  width: 100%;
-  z-index: 3;
-  position: absolute;
-  background-color: #686872;
-  opacity: 0.7;
-}
 
 .ideas {
   display: flex;
@@ -123,8 +116,6 @@ body {
 }
 
 .idea-form {
-  //keep an eye on the flex grow.
-  //can we have 0 and still fit formatting?
   flex-grow: 0;
 }
 
@@ -134,8 +125,9 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 1.5%;
   align-content: start;
+  overflow: auto;
 }
 
 form {
@@ -179,9 +171,14 @@ form {
   border: 1px solid #7676B6;
   border-radius: 2px;
   color: #E9E9F3;
-  background-color: #353567;
-  height: 30px;
+  background-color: #A9AAD2;
+  height: 80%;
   margin-top: 10px;
+}
+
+.buttonEnabled {
+  background-color: #353567;
+  cursor: pointer;
 }
 
 .search-bar {
@@ -191,7 +188,7 @@ form {
 }
 
 .search-icon {
-  width: 10%;
+  width: 2rem;
   padding: 5px;
   background-color: #353567;
   border: 1px solid #7676B6;
@@ -202,7 +199,7 @@ form {
 .search-input {
   border: 1px solid #7676B6;
   border-left: 0;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   border-radius: 0 2px 2px 0;
   width: 100%;
   padding: 3px;
@@ -214,7 +211,7 @@ form {
 
 .idea-card {
   border: 1px solid #6E646B;
-  margin-bottom: 15px;
+  min-width: 110px;
 }
 
 .idea-card-header {
@@ -255,7 +252,16 @@ form {
 
 /*=== media queries ===*/
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 720px){
+  .idea-cards{
+    grid-template-columns: 1fr 1fr;
+  }
+  .menu-dropdown{
+    min-width: 156px;
+  }
+}
+
+@media only screen and (max-width: 415px) {
   body {
     flex-direction: column;
   }
@@ -302,10 +308,23 @@ form {
   }
 
   .starred-ideas {
+    display: none;
+  }
+
+  .dropdown-starred-ideas {
     padding: 10px;
     color: #A9AAD2;
     border-top: 0;
     border-bottom: 0;
+  }
+
+  .blanket {
+    height: 100vh;
+    width: 100%;
+    z-index: 3;
+    position: absolute;
+    background-color: #686872;
+    opacity: 0.7;
   }
 
   .starred-ideas-text {
@@ -334,12 +353,12 @@ form {
 
   .idea-cards {
     grid-template-columns: 1fr;
-    grid-gap: 0;
   }
 
   .search-bar {
     width: 100%;
   }
+
 
   form {
     margin: 0;

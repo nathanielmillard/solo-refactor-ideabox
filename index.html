@@ -9,11 +9,15 @@
     <section class="menu purple-4">
       <img class="hamburger-icon" src="./src/icons/menu.svg" alt="Hamburger Menu Icon">
       <h1 class="header-text">IdeaBox</h1>
+      <section class="starred-ideas">
+        <p class="starred-ideas-text">Filter Starred Ideas</p>
+        <button class="show-starred-ideas purple-3">Show Starred Ideas</button>
+      </section>
     </section>
-    <section class="menu-dropdown purple-4">
+    <section class="menu-dropdown hidden purple-4">
       <img class="menu-close-icon" src="./src/icons/menu-close.svg" alt="Hamburger Menu Icon">
       <h1 class="header-text">IdeaBox</h1>
-      <section class="starred-ideas">
+      <section class="dropdown-starred-ideas">
         <p class="starred-ideas-text">Filter Starred Ideas</p>
         <button class="show-starred-ideas purple-3">Show Starred Ideas</button>
       </section>
@@ -26,7 +30,7 @@
           <input class="idea-form-title" type="text" name="title">
           <label class="body-label" for="body">Body</label>
           <textarea class="idea-form-body"rows="5" style="resize:none"></textarea>
-          <button class="idea-form-button">Save</button>
+          <button class="idea-form-button" id="save-button">Save</button>
         </form>
         <section class="search-bar">
           <img class="search-icon" src="./src/icons/search.svg" alt="Search Icon">
@@ -90,5 +94,7 @@
         </article>
       </section>
     </main>
+    <script src="./src/idea.js"></script>
+    <script src="./src/main.js"></script>
   </body>
 </html>
