@@ -5,6 +5,10 @@ var inputBody = document.querySelector('.idea-form-body');
 var ideaCardsGrid = document.querySelector('.idea-cards');
 var ideaForm = document.querySelector('form');
 var saveButton = document.querySelector('.idea-form-button');
+var hamburgerIcon = document.querySelector('.hamburger-icon');
+var menuCloseIcon = document.querySelector('.menu-close-icon');
+var menuDropDown = document.querySelector('.menu-dropdown')
+var blanket = document.querySelector('.blanket')
 
 var list = [];
 //eventlisteners
@@ -15,6 +19,12 @@ window.onload = disableEnableButton();
 function clickHandler(event){
     if(event.target.classList.contains('idea-form-button')){
       saveIdea();
+    }
+    if (event.target.classList.contains('hamburger-icon')){
+      displayDropDown();
+    }
+    if(event.target.classList.contains('menu-close-icon')){
+      closeDropDown();
     }
 };
 
@@ -70,3 +80,13 @@ function disableEnableButton(){
     saveButton.classList.remove('buttonEnabled');
   }
 };
+
+function displayDropDown(){
+  menuDropDown.classList.remove('hidden');
+  blanket.classList.remove('hidden');
+}
+
+function closeDropDown(){
+  menuDropDown.classList.add('hidden');
+  blanket.classList.add('hidden');
+}
