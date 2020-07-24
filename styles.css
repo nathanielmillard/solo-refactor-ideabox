@@ -67,7 +67,7 @@ body {
 .menu {
   height: 100%;
   width: auto;
-  display: none;
+  /* display: none; */
 }
 
 .menu-dropdown {
@@ -108,14 +108,6 @@ body {
 }
 /*=== main section ===*/
 
-.blanket {
-  height: 100%;
-  width: 100%;
-  z-index: 3;
-  position: absolute;
-  background-color: #686872;
-  opacity: 0.7;
-}
 
 .ideas {
   display: flex;
@@ -316,10 +308,23 @@ form {
   }
 
   .starred-ideas {
+    display: none;
+  }
+
+  .dropdown-starred-ideas {
     padding: 10px;
     color: #A9AAD2;
     border-top: 0;
     border-bottom: 0;
+  }
+
+  .blanket {
+    height: 100vh;
+    width: 100%;
+    z-index: 3;
+    position: absolute;
+    background-color: #686872;
+    opacity: 0.7;
   }
 
   .starred-ideas-text {
