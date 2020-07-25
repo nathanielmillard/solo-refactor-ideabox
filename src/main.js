@@ -45,7 +45,6 @@ function saveIdea(){
   var currentIdea = new Idea(inputTitle.value, inputBody.value);
   list.push(currentIdea);
   displayIdeaCards();
-  console.log(list);
   ideaForm.reset();
   disableEnableButton();
 }
@@ -65,7 +64,6 @@ function deleteIdea(){
 function toggleFavoriteCard(){
   var favoriteIcon = event.target.src;
   var target = event.target.closest(".idea-card")
-  console.log(target)
   if(event.target.src.includes('star.svg')) {
     event.target.src = './src/icons/star-active.svg'
     for(var i = 0; i < list.length; i++){
