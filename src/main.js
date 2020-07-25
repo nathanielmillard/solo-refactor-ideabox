@@ -29,6 +29,9 @@ function clickHandler(event){
     if(event.target.classList.contains('delete-icon')){
       deleteIdea();
     }
+    if(event.target.classList.contains('star-icon')){
+      toggleFavoriteCard();
+    }
 };
 
 function keyupHandler(event){
@@ -54,8 +57,17 @@ function deleteIdea(){
     for(var i = 0; i < list.length; i++){
       if (target.getAttribute("id") == list[i].id) {
         list.splice(i , 1);
-      }
-    }
+      };
+    };
+  };
+};
+
+function toggleFavoriteCard(){
+  var favoriteIcon = event.target.src;
+  if(event.target.src.includes('star.svg')) {
+    event.target.src = './src/icons/star-active.svg'
+  } else {
+    event.target.src = './src/icons/star.svg'
   }
 }
 
@@ -65,7 +77,7 @@ function displayIdeaCards(){
     var ideaCard = `
       <article id="${list[i].id}" class="idea-card">
         <section class="idea-card-header">
-          <img class="star-icon" src="./src/icons/star-active.svg" alt="Active Card">
+          <img class="star-icon" src="./src/icons/star.svg" alt="favorite Card">
           <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
         </section>
         <section class="idea-card-body">
