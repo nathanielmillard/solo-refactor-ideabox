@@ -64,20 +64,40 @@ function deleteIdea(){
 
 function toggleFavoriteCard(){
   var favoriteIcon = event.target.src;
+  var target = event.target.closest(".idea-card")
+  console.log(target)
   if(event.target.src.includes('star.svg')) {
     event.target.src = './src/icons/star-active.svg'
+    for(var i = 0; i < list.length; i++){
+      if(target.getAttribute("id") == list[i].id) {
+        list[i].star = true;
+        console.log(list[i].star)
+      }
+    }
   } else {
     event.target.src = './src/icons/star.svg'
+    for(var i = 0; i < list.length; i++){
+      if(target.getAttribute("id") == list[i].id) {
+        list[i].star = false;
+      }
+    }
   }
 }
+
 
 function displayIdeaCards(){
   ideaCardsGrid.innerHTML = '';
   for (var i = 0; i < list.length; i++){
+    var imgCardSrc = "";
+    if(list[i].star == true){
+      imgCardSrc = `src="./src/icons/star-active.svg"`
+    } else {
+      imgCardSrc = `src="./src/icons/star.svg"`
+    }
     var ideaCard = `
       <article id="${list[i].id}" class="idea-card">
         <section class="idea-card-header">
-          <img class="star-icon" src="./src/icons/star.svg" alt="favorite Card">
+          <img class="star-icon" ${imgCardSrc} alt="favorite Card">
           <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
         </section>
         <section class="idea-card-body">
