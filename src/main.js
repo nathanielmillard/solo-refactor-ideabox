@@ -71,7 +71,6 @@ function toggleFavoriteCard(){
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
         list[i].star = true;
-        console.log(list[i].star)
       }
     }
   } else {
