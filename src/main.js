@@ -72,12 +72,10 @@ function displayIdeaCards(){
 }
 
 function disableEnableButton(){
-  if (inputTitle.value !== '' && inputBody.value !== ''){
-    saveButton.disabled = false;
-    saveButton.classList.add('buttonEnabled');
-  } else {
+  if (!inputTitle.value.trim() || !inputBody.value.trim()){
     saveButton.disabled = true;
-    saveButton.classList.remove('buttonEnabled');
+  } else {
+    saveButton.disabled = false;
   }
 };
 
