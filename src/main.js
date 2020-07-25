@@ -26,6 +26,12 @@ function clickHandler(event){
     if(event.target.classList.contains('menu-close-icon')){
       closeDropDown();
     }
+    if(event.target.classList.contains('delete-icon')){
+      deleteIdea();
+    }
+    if(event.target.classList.contains('star-icon')){
+      toggleFavoriteCard();
+    }
 };
 
 function keyupHandler(event){
@@ -39,19 +45,57 @@ function saveIdea(){
   var currentIdea = new Idea(inputTitle.value, inputBody.value);
   list.push(currentIdea);
   displayIdeaCards();
-  console.log(list);
   ideaForm.reset();
   disableEnableButton();
 }
 
+function deleteIdea(){
+  if(event.target.closest(".idea-card")){
+    var target = event.target.closest(".idea-card");
+    ideaCardsGrid.removeChild(target);
+    for(var i = 0; i < list.length; i++){
+      if (target.getAttribute("id") == list[i].id) {
+        list.splice(i , 1);
+      };
+    };
+  };
+};
+
+function toggleFavoriteCard(){
+  var favoriteIcon = event.target.src;
+  var target = event.target.closest(".idea-card")
+  if(event.target.src.includes('star.svg')) {
+    event.target.src = './src/icons/star-active.svg'
+    for(var i = 0; i < list.length; i++){
+      if(target.getAttribute("id") == list[i].id) {
+        list[i].star = true;
+      }
+    }
+  } else {
+    event.target.src = './src/icons/star.svg'
+    for(var i = 0; i < list.length; i++){
+      if(target.getAttribute("id") == list[i].id) {
+        list[i].star = false;
+      }
+    }
+  }
+}
+
+
 function displayIdeaCards(){
   ideaCardsGrid.innerHTML = '';
   for (var i = 0; i < list.length; i++){
+    var imgCardSrc = "";
+    if(list[i].star == true){
+      imgCardSrc = `src="./src/icons/star-active.svg"`
+    } else {
+      imgCardSrc = `src="./src/icons/star.svg"`
+    }
     var ideaCard = `
-      <article class="idea-card">
+      <article id="${list[i].id}" class="idea-card">
         <section class="idea-card-header">
-          <img src="./src/icons/star-active.svg" alt="Active Card">
-          <img src="./src/icons/delete.svg" alt="Delete Card">
+          <img class="star-icon" ${imgCardSrc} alt="favorite Card">
+          <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
         </section>
         <section class="idea-card-body">
           <h3 class="idea-title">
@@ -62,7 +106,7 @@ function displayIdeaCards(){
           </p>
         </section>
         <section class="idea-card-footer">
-          <img src="./src/icons/comment.svg" alt="Comment Icon">
+          <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
           <p class="comment">Comment</p>
         </section>
       </article>
@@ -72,12 +116,10 @@ function displayIdeaCards(){
 }
 
 function disableEnableButton(){
-  if (inputTitle.value !== '' && inputBody.value !== ''){
-    saveButton.disabled = false;
-    saveButton.classList.add('buttonEnabled');
-  } else {
+  if (!inputTitle.value.trim() || !inputBody.value.trim()){
     saveButton.disabled = true;
-    saveButton.classList.remove('buttonEnabled');
+  } else {
+    saveButton.disabled = false;
   }
 };
 
