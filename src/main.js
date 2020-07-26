@@ -44,6 +44,7 @@ function saveIdea(){
   event.preventDefault();
   var currentIdea = new Idea(inputTitle.value, inputBody.value);
   list.push(currentIdea);
+  currentIdea.saveToStorage(currentIdea);
   displayIdeaCards();
   ideaForm.reset();
   disableEnableButton();
@@ -83,6 +84,11 @@ function toggleFavoriteCard(){
 
 
 function displayIdeaCards(){
+  // first check local storage to see if any cards are stored
+  // if cards are stored, loop through each element in local saveToStorage
+  // JSON parse the stringifyObject
+  // push into data model list array
+  // display on the screen from data model list array
   ideaCardsGrid.innerHTML = '';
   for (var i = 0; i < list.length; i++){
     var imgCardSrc = "";
