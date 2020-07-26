@@ -72,14 +72,20 @@ function toggleFavoriteCard(){
     event.target.src = './src/icons/star-active.svg';
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
+        var updateIdeaCard = new Idea(list[i].title, list[i].body, true);
+        updateIdeaCard.id = list[i].id;
         list[i].star = true;
+        list[i].updateIdea(updateIdeaCard);
       }
     }
   } else {
     event.target.src = './src/icons/star.svg'
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
+        var updateIdeaCard = new Idea(list[i].title, list[i].body);
+        updateIdeaCard.id = list[i].id;
         list[i].star = false;
+        list[i].updateIdea(updateIdeaCard);
       }
     }
   }
@@ -91,8 +97,9 @@ function displayIdeaCards(){
     for (var i = 0; i < localStorage.length; i++) {
       var retrievedIdeaCard = localStorage.getItem(`${Object.keys(localStorage)[i]}`);
       var parsedIdeaCard = JSON.parse(retrievedIdeaCard);
-      var rebuildIdeaCard = new Idea(parsedIdeaCard.title, parsedIdeaCard.body);
+      var rebuildIdeaCard = new Idea(parsedIdeaCard.title, parsedIdeaCard.body, parsedIdeaCard.star);
       rebuildIdeaCard.id = parsedIdeaCard.id;
+      console.log(rebuildIdeaCard);
       list.push(rebuildIdeaCard);
     }
   }
