@@ -9,7 +9,8 @@ class Idea {
 
   saveToStorage(ideaCard) {
     var stringifyObject = JSON.stringify(ideaCard);
-    localStorage.setItem(ideaCard.id.toString(), stringifyObject);
+    var storageName = `ideaCard${localStorage.length}`;
+    localStorage.setItem(storageName, stringifyObject);
   }
 
   deleteFromStorage(ideaCard) {
@@ -17,6 +18,6 @@ class Idea {
   }
 
   updateIdea(ideaCard) {
-    
+
   }
 }
