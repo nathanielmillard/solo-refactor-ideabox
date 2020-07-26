@@ -1,10 +1,10 @@
 
 class Idea {
-  constructor(title, body){
+  constructor(title, body, star){
     this.id = Date.now();
     this.title = title;
     this.body = body;
-    this.star = false;
+    this.star = star || false;
   }
 
   saveToStorage(ideaCard) {
@@ -17,6 +17,6 @@ class Idea {
   }
 
   updateIdea(ideaCard) {
-
+    this.saveToStorage(ideaCard);
   }
 }
