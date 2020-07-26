@@ -59,17 +59,17 @@ function deleteIdea(){
     ideaCardsGrid.removeChild(target);
     for(var i = 0; i < list.length; i++){
       if (target.getAttribute("id") == list[i].id) {
-        list.splice(i , 1);
+        list[i].deleteFromStorage(target);
+        list.splice(i, 1);
       };
     };
   };
 };
 
 function toggleFavoriteCard(){
-  var favoriteIcon = event.target.src;
   var target = event.target.closest(".idea-card")
   if(event.target.src.includes('star.svg')) {
-    event.target.src = './src/icons/star-active.svg'
+    event.target.src = './src/icons/star-active.svg';
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
         list[i].star = true;
@@ -85,18 +85,15 @@ function toggleFavoriteCard(){
   }
 }
 
-
 function displayIdeaCards(){
-  // first check local storage to see if any cards are stored
-  // if cards are stored, loop through each element in local saveToStorage
-  // JSON parse the stringifyObject
-  // push into data model list array
-  // display on the screen from data model list array
   if (localStorage.length > 0) {
+    list = [];
     for (var i = 0; i < localStorage.length; i++) {
-      var retrievedIdeaCard = localStorage.getItem(`ideaCard${i}`);
+      var retrievedIdeaCard = localStorage.getItem(`${Object.keys(localStorage)[i]}`);
       var parsedIdeaCard = JSON.parse(retrievedIdeaCard);
-      list.push(parsedIdeaCard);
+      var rebuildIdeaCard = new Idea(parsedIdeaCard.title, parsedIdeaCard.body);
+      rebuildIdeaCard.id = parsedIdeaCard.id;
+      list.push(rebuildIdeaCard);
     }
   }
   ideaCardsGrid.innerHTML = '';
