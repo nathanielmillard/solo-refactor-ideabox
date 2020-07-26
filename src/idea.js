@@ -9,12 +9,11 @@ class Idea {
 
   saveToStorage(ideaCard) {
     var stringifyObject = JSON.stringify(ideaCard);
-    var storageName = `ideaCard${localStorage.length}`;
-    localStorage.setItem(storageName, stringifyObject);
+    localStorage.setItem(ideaCard.id, stringifyObject);
   }
 
   deleteFromStorage(ideaCard) {
-
+    localStorage.removeItem(ideaCard.id);
   }
 
   updateIdea(ideaCard) {
