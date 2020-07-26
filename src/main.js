@@ -14,7 +14,10 @@ var list = [];
 //eventlisteners
 body.addEventListener('click', clickHandler);
 body.addEventListener('keyup', keyupHandler);
-window.onload = disableEnableButton();
+window.onload = function() {
+  disableEnableButton();
+  displayIdeaCards();
+}
 //functions
 function clickHandler(event){
     if(event.target.classList.contains('idea-form-button')){
@@ -44,6 +47,7 @@ function saveIdea(){
   event.preventDefault();
   var currentIdea = new Idea(inputTitle.value, inputBody.value);
   list.push(currentIdea);
+  currentIdea.saveToStorage(currentIdea);
   displayIdeaCards();
   ideaForm.reset();
   disableEnableButton();
@@ -55,34 +59,50 @@ function deleteIdea(){
     ideaCardsGrid.removeChild(target);
     for(var i = 0; i < list.length; i++){
       if (target.getAttribute("id") == list[i].id) {
-        list.splice(i , 1);
+        list[i].deleteFromStorage(target);
+        list.splice(i, 1);
       };
     };
   };
 };
 
 function toggleFavoriteCard(){
-  var favoriteIcon = event.target.src;
   var target = event.target.closest(".idea-card")
   if(event.target.src.includes('star.svg')) {
-    event.target.src = './src/icons/star-active.svg'
+    event.target.src = './src/icons/star-active.svg';
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
+        var updateIdeaCard = new Idea(list[i].title, list[i].body, true);
+        updateIdeaCard.id = list[i].id;
         list[i].star = true;
+        list[i].updateIdea(updateIdeaCard);
       }
     }
   } else {
     event.target.src = './src/icons/star.svg'
     for(var i = 0; i < list.length; i++){
       if(target.getAttribute("id") == list[i].id) {
+        var updateIdeaCard = new Idea(list[i].title, list[i].body);
+        updateIdeaCard.id = list[i].id;
         list[i].star = false;
+        list[i].updateIdea(updateIdeaCard);
       }
     }
   }
 }
 
-
 function displayIdeaCards(){
+  if (localStorage.length > 0) {
+    list = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var retrievedIdeaCard = localStorage.getItem(`${Object.keys(localStorage)[i]}`);
+      var parsedIdeaCard = JSON.parse(retrievedIdeaCard);
+      var rebuildIdeaCard = new Idea(parsedIdeaCard.title, parsedIdeaCard.body, parsedIdeaCard.star);
+      rebuildIdeaCard.id = parsedIdeaCard.id;
+      console.log(rebuildIdeaCard);
+      list.push(rebuildIdeaCard);
+    }
+  }
   ideaCardsGrid.innerHTML = '';
   for (var i = 0; i < list.length; i++){
     var imgCardSrc = "";
