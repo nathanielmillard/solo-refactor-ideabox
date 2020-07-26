@@ -14,7 +14,10 @@ var list = [];
 //eventlisteners
 body.addEventListener('click', clickHandler);
 body.addEventListener('keyup', keyupHandler);
-window.onload = disableEnableButton();
+window.onload = function() {
+  disableEnableButton();
+  displayIdeaCards();
+}
 //functions
 function clickHandler(event){
     if(event.target.classList.contains('idea-form-button')){
@@ -89,6 +92,13 @@ function displayIdeaCards(){
   // JSON parse the stringifyObject
   // push into data model list array
   // display on the screen from data model list array
+  if (localStorage.length > 0) {
+    for (var i = 0; i < localStorage.length; i++) {
+      var retrievedIdeaCard = localStorage.getItem(`ideaCard${i}`);
+      var parsedIdeaCard = JSON.parse(retrievedIdeaCard);
+      list.push(parsedIdeaCard);
+    }
+  }
   ideaCardsGrid.innerHTML = '';
   for (var i = 0; i < list.length; i++){
     var imgCardSrc = "";
