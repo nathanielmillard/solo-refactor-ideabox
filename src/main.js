@@ -11,7 +11,7 @@ var menuDropDown = document.querySelector('.menu-dropdown');
 var blanket = document.querySelector('.blanket');
 var starredIdeasButton = document.querySelector('.show-starred-ideas');
 var searchBar = document.querySelector('.search-input');
-
+var commentInput = document.querySelector('.comment-input')
 
 
 var list = [];
@@ -47,6 +47,9 @@ function clickHandler(event){
     }
     if(event.target.classList.contains('add-comment-icon')){
       toggleCommentForm();
+    }
+    if(event.target.classList.contains('save-comment-btn')){
+      displayComment();
     }
 };
 
@@ -188,6 +191,18 @@ function toggleCommentForm(){
   commentForm.classList.toggle("hidden")
 }
 
+function displayComment(){
+  var commentSection = event.target.parentNode.nextElementSibling
+  var commentInput = event.target.previousElementSibling
+  console.log(commentInput)
+  event.preventDefault();
+  var comment = `
+  <div class="one-comment">
+  <h6> ${commentInput.value} </h6>
+  <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
+  </div>`
+  commentSection.insertAdjacentHTML('afterbegin', comment)
+}
 
 function printIdeaHTML(list, imgCardSrc){
   var ideaCard = `
@@ -215,14 +230,6 @@ function printIdeaHTML(list, imgCardSrc){
         </button>
       </form>
       <section class="comments">
-        <div class="one-comment">
-        <h6> Temp Comment </h6>
-        <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
-        </div>
-        <div class="one-comment">
-        <h6> Temp Comment 2 </h6>
-        <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
-        </div>
       </section>
     </article>
   `;
