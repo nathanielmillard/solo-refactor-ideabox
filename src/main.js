@@ -67,8 +67,9 @@ function deleteIdea(){
     ideaCardsGrid.removeChild(currentIdea);
     for(var i = 0; i < list.length; i++){
       if (+currentIdea.dataset.id === list[i].id) {
-        list[i].deleteFromStorage(list);
+        var deletedCard = list[i];
         list.splice(i, 1);
+        deletedCard.deleteFromStorage(list);
       };
     };
   };
