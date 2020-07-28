@@ -7,9 +7,10 @@ var ideaForm = document.querySelector('form');
 var saveButton = document.querySelector('.idea-form-button');
 var hamburgerIcon = document.querySelector('.hamburger-icon');
 var menuCloseIcon = document.querySelector('.menu-close-icon');
-var menuDropDown = document.querySelector('.menu-dropdown')
-var blanket = document.querySelector('.blanket')
-var starredIdeasButton = document.querySelector('.show-starred-ideas')
+var menuDropDown = document.querySelector('.menu-dropdown');
+var blanket = document.querySelector('.blanket');
+var starredIdeasButton = document.querySelector('.show-starred-ideas');
+var searchBar = document.querySelector('.search-input');
 
 var favoritedIdeas = [];
 var list = [];
@@ -48,6 +49,9 @@ function clickHandler(event){
 function keyupHandler(event){
   if(event.target === inputTitle || event.target === inputBody){
     disableEnableButton();
+  }
+  if(event.target === searchBar){
+    filterIdeas();
   }
 };
 
@@ -188,9 +192,49 @@ function toggleShownIdeas(){
         `;
         ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
       }
-      }
+    }
   } else{
     starredIdeasButton.innerText = 'Show Starred Ideas';
+    displayIdeaCards();
+  }
+}
+
+function filterIdeas(){
+  var searchTerm = event.target.value;
+  if(searchTerm !== ""){
+    ideaCardsGrid.innerHTML = "";
+    for(var i = 0; i < list.length; i++){
+      if(list[i].title.includes(searchTerm) || list[i].body.includes(searchTerm)){
+        var imgCardSrc = "";
+        if(list[i].star){
+          imgCardSrc = `src="./src/icons/star-active.svg"`
+        } else {
+          imgCardSrc = `src="./src/icons/star.svg"`
+        }
+        var ideaCard = `
+          <article data-id="${list[i].id}" class="idea-card">
+            <section class="idea-card-header">
+              <img class="star-icon" ${imgCardSrc} alt="favorite Card">
+              <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
+            </section>
+            <section class="idea-card-body">
+              <h3 class="idea-title">
+                ${list[i].title}
+              </h3>
+              <p class="idea-body">
+                ${list[i].body}
+              </p>
+            </section>
+            <section class="idea-card-footer">
+              <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
+              <p class="comment">Comment</p>
+            </section>
+          </article>
+        `;
+        ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard)
+      }
+    }
+  } else {
     displayIdeaCards();
   }
 }
