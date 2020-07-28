@@ -11,7 +11,7 @@ var menuDropDown = document.querySelector('.menu-dropdown');
 var blanket = document.querySelector('.blanket');
 var starredIdeasButton = document.querySelector('.show-starred-ideas');
 var searchBar = document.querySelector('.search-input');
-var commentInput = document.querySelector('.comment-input')
+var commentInputField = document.querySelector('.comment-input')
 
 
 var list = [];
@@ -59,6 +59,9 @@ function keyupHandler(event){
   }
   if(event.target === searchBar){
     filterIdeas();
+  }
+  if(event.target.classList.contains('comment-input')){
+    disableEnableCommentButton();
   }
 };
 
@@ -133,6 +136,16 @@ function disableEnableButton(){
   }
 };
 
+function disableEnableCommentButton(){
+  var commentSaveButton = event.target.nextElementSibling
+  var commentInput = event.target
+  if (!commentInput.value.trim()){
+    commentSaveButton.disabled = true
+  } else {
+    commentSaveButton.disabled = false
+  }
+}
+
 function toggleDropDown(){
   menuDropDown.classList.toggle('hidden');
   blanket.classList.toggle('hidden');
@@ -187,21 +200,24 @@ function filterIdeas(){
 }
 
 function toggleCommentForm(){
-  var commentForm = event.target.parentNode.nextElementSibling
-  commentForm.classList.toggle("hidden")
+  var commentForm = event.target.parentNode.nextElementSibling;
+  commentForm.classList.toggle("hidden");
+  var button = event.target.parentNode.nextElementSibling.lastElementChild
+  button.disabled = true;
 }
 
 function displayComment(){
   var commentSection = event.target.parentNode.nextElementSibling
   var commentInput = event.target.previousElementSibling
-  console.log(commentInput)
   event.preventDefault();
   var comment = `
   <div class="one-comment">
   <h6> ${commentInput.value} </h6>
-  <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
   </div>`
   commentSection.insertAdjacentHTML('afterbegin', comment)
+  commentInput.value = '';
+  var button = event.target
+  button.disabled = true;
 }
 
 function printIdeaHTML(list, imgCardSrc){
