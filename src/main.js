@@ -199,6 +199,22 @@ function printIdeaHTML(list, imgCardSrc){
         <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
         <p class="comment">Comment</p>
       </section>
+      <form class="comment-form">
+        <input class="comment-input">
+        <button class="save-comment-btn">
+        Save
+        </button>
+      </form>
+      <section class="comments">
+        <div class="one-comment">
+        <h6> Temp Comment </h6>
+        <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
+        </div>
+        <div class="one-comment">
+        <h6> Temp Comment 2 </h6>
+        <img class="delete-icon delete-comment" src="./src/icons/delete.svg" alt="Delete Comment">
+        </div>
+      </section>
     </article>
   `;
   ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
