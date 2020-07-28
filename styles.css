@@ -66,13 +66,13 @@ body {
 
 .menu {
   height: 100%;
-  width: auto;
-  /* display: none; */
+  width: 20%;
+  max-width: 220px;
+  min-width: 140px;
 }
 
 .menu-dropdown {
   height: auto;
-  width: 20%;
   display: none;
 }
 
@@ -122,7 +122,7 @@ body {
 
 .idea-cards {
   flex-grow: 3;
-  padding: 10px;
+  padding: 1.5rem 10px 10px 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
@@ -137,6 +137,7 @@ form {
   grid-template-rows: repeat(6, 1fr);
   margin-bottom: 10px;
   width: 60%;
+  max-width: 500px;
   margin: auto;
 }
 
@@ -177,10 +178,11 @@ form {
   height: 80%;
   margin-top: 10px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .idea-form-button:disabled {
-  background-color: #A9AAD2;
+  opacity: 20%;
   cursor: auto;
 }
 
@@ -188,6 +190,8 @@ form {
   display: flex;
   margin: 10px auto;
   width: 60%;
+  max-width: 500px;
+  padding-bottom: 1rem;
 }
 
 .search-icon {
@@ -285,10 +289,10 @@ form {
   .menu, .menu-dropdown {
     height: 40px;
     text-align: center;
-    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
+    min-width: 100%;
   }
 
   .menu-dropdown {
@@ -361,6 +365,9 @@ form {
     width: 100%;
   }
 
+img{
+  min-width: 25px;
+}
 
   form {
     margin: 0;
