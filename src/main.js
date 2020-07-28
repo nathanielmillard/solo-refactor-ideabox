@@ -12,7 +12,8 @@ var blanket = document.querySelector('.blanket');
 var starredIdeasButton = document.querySelector('.show-starred-ideas');
 var searchBar = document.querySelector('.search-input');
 
-var favoritedIdeas = [];
+
+
 var list = [];
 var currentIdea;
 
@@ -43,6 +44,9 @@ function clickHandler(event){
     }
     if(event.target.classList.contains('show-starred-ideas')){
       toggleShownIdeas();
+    }
+    if(event.target.classList.contains('add-comment-icon')){
+      toggleCommentForm();
     }
 };
 
@@ -179,6 +183,11 @@ function filterIdeas(){
   }
 }
 
+function toggleCommentForm(){
+  var commentForm = event.target.parentNode.nextElementSibling
+  commentForm.classList.toggle("hidden")
+}
+
 
 function printIdeaHTML(list, imgCardSrc){
   var ideaCard = `
@@ -196,10 +205,10 @@ function printIdeaHTML(list, imgCardSrc){
         </p>
       </section>
       <section class="idea-card-footer">
-        <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
+        <img class="add-comment-icon" src="./src/icons/comment.svg" alt="Comment Icon">
         <p class="comment">Comment</p>
       </section>
-      <form class="comment-form">
+      <form class="comment-form hidden">
         <input class="comment-input">
         <button class="save-comment-btn">
         Save
