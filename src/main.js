@@ -9,6 +9,7 @@ var hamburgerIcon = document.querySelector('.hamburger-icon');
 var menuCloseIcon = document.querySelector('.menu-close-icon');
 var menuDropDown = document.querySelector('.menu-dropdown')
 var blanket = document.querySelector('.blanket')
+var starredIdeasButton = document.querySelector('.show-starred-ideas')
 
 var favoritedIdeas = [];
 var list = [];
@@ -38,6 +39,9 @@ function clickHandler(event){
     }
     if(event.target.classList.contains('star-icon')){
       toggleFavoriteCard();
+    }
+    if(event.target.classList.contains('show-starred-ideas')){
+      toggleShownIdeas();
     }
 };
 
@@ -152,5 +156,40 @@ function getAllIdeaCardsFromLocalStorage(){
       currentIdea.id = parseAllIdeas[i].id;
       list.push(currentIdea);
     };
+  }
+}
+
+function toggleShownIdeas(){
+  ideaCardsGrid.innerHTML = "";
+  if(starredIdeasButton.innerText == 'Show Starred Ideas'){
+    starredIdeasButton.innerText = 'Show All Ideas';
+    for (var i = 0; i < list.length; i++){
+      if(list[i].star){
+        var ideaCard = `
+          <article data-id="${list[i].id}" class="idea-card">
+            <section class="idea-card-header">
+              <img class="star-icon" src="./src/icons/star-active.svg" alt="favorite Card">
+              <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
+            </section>
+            <section class="idea-card-body">
+              <h3 class="idea-title">
+                ${list[i].title}
+              </h3>
+              <p class="idea-body">
+                ${list[i].body}
+              </p>
+            </section>
+            <section class="idea-card-footer">
+              <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
+              <p class="comment">Comment</p>
+            </section>
+          </article>
+        `;
+        ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
+      }
+      }
+  } else{
+    starredIdeasButton.innerText = 'Show Starred Ideas';
+    displayIdeaCards();
   }
 }
