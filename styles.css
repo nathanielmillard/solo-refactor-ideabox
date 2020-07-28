@@ -164,10 +164,10 @@ form {
   grid-column: 1;
   border: 1px solid #7676B6;
   border-radius: 2px;
+  resize: none;
 }
 
 .idea-form-button {
-  /* #E9E9F3 #A9AAD2 */
   grid-row: 6;
   grid-column: 1;
   border: 1px solid #7676B6;
@@ -240,6 +240,14 @@ form {
 
 .idea-title {
   margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.idea-body {
+  overflow: auto;
+  font-size: 1.2rem;
+  height: 4rem;
 }
 
 .idea-card-footer {
@@ -249,7 +257,7 @@ form {
 }
 
 .idea-card-footer p {
-  font-size: 0.6rem;
+  font-size: 1rem;
   align-self: center;
 }
 

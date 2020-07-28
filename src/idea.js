@@ -7,16 +7,16 @@ class Idea {
     this.star = star || false;
   }
 
-  saveToStorage(ideaCard) {
-    var stringifyObject = JSON.stringify(ideaCard);
-    localStorage.setItem(ideaCard.id, stringifyObject);
+  saveToStorage(array) {
+    var stringifyObject = JSON.stringify(array);
+    localStorage.setItem('allIdeas', stringifyObject);
   }
 
-  deleteFromStorage(ideaCard) {
-    localStorage.removeItem(ideaCard.id);
+  deleteFromStorage(array) {
+    this.saveToStorage(array);
   }
 
-  updateIdea(ideaCard) {
-    this.saveToStorage(ideaCard);
+  updateIdea(array) {
+    this.saveToStorage(array);
   }
 }
