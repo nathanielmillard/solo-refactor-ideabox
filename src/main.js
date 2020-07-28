@@ -114,29 +114,9 @@ function displayIdeaCards(){
     } else {
       imgCardSrc = `src="./src/icons/star.svg"`
     }
-    var ideaCard = `
-      <article data-id="${list[i].id}" class="idea-card">
-        <section class="idea-card-header">
-          <img class="star-icon" ${imgCardSrc} alt="favorite Card">
-          <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
-        </section>
-        <section class="idea-card-body">
-          <h3 class="idea-title">
-            ${list[i].title}
-          </h3>
-          <p class="idea-body">
-            ${list[i].body}
-          </p>
-        </section>
-        <section class="idea-card-footer">
-          <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
-          <p class="comment">Comment</p>
-        </section>
-      </article>
-    `;
-    ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
+    printIdeaHTML(list[i], imgCardSrc);
   }
-}
+};
 
 function disableEnableButton(){
   if (!inputTitle.value.trim() || !inputBody.value.trim()){
@@ -155,7 +135,7 @@ function getAllIdeaCardsFromLocalStorage(){
   if (localStorage.key('allIdeas')) {
     list = [];
     var retrieveAllIdeas = localStorage.getItem('allIdeas');
-    var parseAllIdeas = JSON.parse(retrieveAllIdeas);
+    var parseAllIdeas = JSON.parse(retrieveAllIdeas) || [];
     for (var i = 0; i < parseAllIdeas.length; i++) {
       currentIdea = new Idea(parseAllIdeas[i].title, parseAllIdeas[i].body, parseAllIdeas[i].star);
       currentIdea.id = parseAllIdeas[i].id;
@@ -170,27 +150,7 @@ function toggleShownIdeas(){
     starredIdeasButton.innerText = 'Show All Ideas';
     for (var i = 0; i < list.length; i++){
       if(list[i].star){
-        var ideaCard = `
-          <article data-id="${list[i].id}" class="idea-card">
-            <section class="idea-card-header">
-              <img class="star-icon" src="./src/icons/star-active.svg" alt="favorite Card">
-              <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
-            </section>
-            <section class="idea-card-body">
-              <h3 class="idea-title">
-                ${list[i].title}
-              </h3>
-              <p class="idea-body">
-                ${list[i].body}
-              </p>
-            </section>
-            <section class="idea-card-footer">
-              <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
-              <p class="comment">Comment</p>
-            </section>
-          </article>
-        `;
-        ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
+        printIdeaHTML(list[i], "src='./src/icons/star-active.svg'")
       }
     }
   } else{
@@ -211,30 +171,35 @@ function filterIdeas(){
         } else {
           imgCardSrc = `src="./src/icons/star.svg"`
         }
-        var ideaCard = `
-          <article data-id="${list[i].id}" class="idea-card">
-            <section class="idea-card-header">
-              <img class="star-icon" ${imgCardSrc} alt="favorite Card">
-              <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
-            </section>
-            <section class="idea-card-body">
-              <h3 class="idea-title">
-                ${list[i].title}
-              </h3>
-              <p class="idea-body">
-                ${list[i].body}
-              </p>
-            </section>
-            <section class="idea-card-footer">
-              <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
-              <p class="comment">Comment</p>
-            </section>
-          </article>
-        `;
-        ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard)
+      printIdeaHTML(list[i], imgCardSrc);
       }
     }
   } else {
     displayIdeaCards();
   }
 }
+
+
+function printIdeaHTML(list, imgCardSrc){
+  var ideaCard = `
+    <article data-id="${list.id}" class="idea-card">
+      <section class="idea-card-header">
+        <img class="star-icon" ${imgCardSrc} alt="favorite Card">
+        <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
+      </section>
+      <section class="idea-card-body">
+        <h3 class="idea-title">
+          ${list.title}
+        </h3>
+        <p class="idea-body">
+          ${list.body}
+        </p>
+      </section>
+      <section class="idea-card-footer">
+        <img class="add-icon" src="./src/icons/comment.svg" alt="Comment Icon">
+        <p class="comment">Comment</p>
+      </section>
+    </article>
+  `;
+  ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
+};
