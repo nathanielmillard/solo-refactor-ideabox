@@ -131,7 +131,7 @@ body {
   overflow: auto;
 }
 
-form {
+.new-idea-form {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
@@ -265,6 +265,30 @@ form {
   align-self: center;
 }
 
+.one-comment{
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-form{
+  display:block;
+}
+
+.save-comment-btn{
+  background-color: green;
+}
+
+.save-comment-btn:disabled{
+  background-color: purple;
+}
+
+.delete-comment{
+  width: 1rem;
+
+}
+
+
+
 /*=== media queries ===*/
 
 @media only screen and (max-width: 720px){
@@ -365,11 +389,11 @@ form {
     width: 100%;
   }
 
-img{
-  min-width: 25px;
-}
+  img{
+    min-width: 25px;
+  }
 
-  form {
+  .new-idea-form {
     margin: 0;
     width: 100%;
   }
