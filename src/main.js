@@ -95,7 +95,7 @@ function toggleFavoriteCard(){
     event.target.src = './src/icons/star-active.svg';
     for(var i = 0; i < list.length; i++){
       if(+target.dataset.id === list[i].id) {
-        currentIdea = new Idea(list[i].title, list[i].body, true);
+        currentIdea = new Idea(list[i].title, list[i].body, [], true);
         currentIdea.id = list[i].id;
         list[i].star = true;
         currentIdea.updateIdea(list);
@@ -157,7 +157,7 @@ function getAllIdeaCardsFromLocalStorage(){
     var retrieveAllIdeas = localStorage.getItem('allIdeas');
     var parseAllIdeas = JSON.parse(retrieveAllIdeas) || [];
     for (var i = 0; i < parseAllIdeas.length; i++) {
-      currentIdea = new Idea(parseAllIdeas[i].title, parseAllIdeas[i].body, parseAllIdeas[i].star);
+      currentIdea = new Idea(parseAllIdeas[i].title, parseAllIdeas[i].body, parseAllIdeas[i].comments, parseAllIdeas[i].star);
       currentIdea.id = parseAllIdeas[i].id;
       list.push(currentIdea);
     };
@@ -209,13 +209,22 @@ function toggleCommentForm(){
 function displayComment(){
   var commentSection = event.target.parentNode.nextElementSibling
   var commentInput = event.target.previousElementSibling
+  var currentComment = new Comment(commentInput.value)
+  console.log(currentComment)
   event.preventDefault();
   var comment = `
   <div class="one-comment">
-  <h6> ${commentInput.value} </h6>
+  <h6> ${currentComment.content} </h6>
   </div>`
   commentSection.insertAdjacentHTML('afterbegin', comment)
   commentInput.value = '';
+  var ideaCardID = event.target.closest(".idea-card").dataset.id
+  for (var i = 0; i < list.length; i++){
+    if(list[i].id == ideaCardID){
+      list[i].comments.push(currentComment)
+      list[i].saveToStorage(list);
+    }
+  }
   var button = event.target
   button.disabled = true;
 }
@@ -246,8 +255,28 @@ function printIdeaHTML(list, imgCardSrc){
         </button>
       </form>
       <section class="comments">
+      ${printCommentsDiv()}
       </section>
     </article>
+
   `;
   ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
 };
+
+function printCommentsDiv(){
+  var commentSectionHTML = '';
+  for (var i = 0; i < list.length; i++){
+    if(list[i].comments.length > 0){
+      for (var j = 0; j < list[i].comments.length; j++){
+        console.log('listJ',list[i].comments[j].content)
+        commentSectionHTML += `
+        <div class="one-comment">
+        <h6> ${list[i].comments[j].content} </h6>
+        </div>
+        `
+      }
+    }
+  }
+  console.log(commentSectionHTML)
+  return commentSectionHTML
+}
