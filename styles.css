@@ -107,6 +107,10 @@ body {
   border-radius: 2px;
   margin-bottom: 5px;
 }
+
+.blanket {
+  display: none;
+}
 /*=== main section ===*/
 
 
@@ -358,6 +362,7 @@ body {
   }
 
   .blanket {
+    display: block;
     top:0;
     bottom:0;
     left:0;
