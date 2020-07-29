@@ -208,22 +208,29 @@ function displayComment() {
   var commentInput = event.target.previousElementSibling;
   var currentComment = new Comment(commentInput.value);
   event.preventDefault();
-  var comment = `
-    <div class='one-comment'>
-    <h6> ${currentComment.content} </h6>
-    </div>`;
-  commentSection.insertAdjacentHTML('afterbegin', comment);
   commentInput.value = '';
+  buildCommentHTML(commentSection, currentComment);
   var ideaCardID = event.target.closest('.idea-card').dataset.id;
+  saveCommentToStorage(ideaCardID, currentComment);
+  var button = event.target;
+  button.disabled = true;
+};
+
+function saveCommentToStorage(id, newComment) {
   for (var i = 0; i < list.length; i++) {
-    if (list[i].id == ideaCardID) {
-      list[i].comments.push(currentComment);
+    if (list[i].id == id) {
+      list[i].comments.push(newComment);
       list[i].saveToStorage(list);
     }
   }
+};
 
-  var button = event.target;
-  button.disabled = true;
+function buildCommentHTML(areaHTML, newComment) {
+  var comment = `
+  <div class='one-comment'>
+  <h6> ${newComment.content} </h6>
+  </div>`;
+  areaHTML.insertAdjacentHTML('afterbegin', comment);
 };
 
 function printIdeaHTML(array, imgCardSrc) {
