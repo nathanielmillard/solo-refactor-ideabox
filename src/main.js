@@ -210,12 +210,11 @@ function displayComment(){
   var commentSection = event.target.parentNode.nextElementSibling
   var commentInput = event.target.previousElementSibling
   var currentComment = new Comment(commentInput.value)
-  console.log(currentComment)
   event.preventDefault();
   var comment = `
-  <div class="one-comment">
-  <h6> ${currentComment.content} </h6>
-  </div>`
+    <div class="one-comment">
+    <h6> ${currentComment.content} </h6>
+    </div>`
   commentSection.insertAdjacentHTML('afterbegin', comment)
   commentInput.value = '';
   var ideaCardID = event.target.closest(".idea-card").dataset.id
@@ -229,19 +228,19 @@ function displayComment(){
   button.disabled = true;
 }
 
-function printIdeaHTML(list, imgCardSrc){
+function printIdeaHTML(array, imgCardSrc){
   var ideaCard = `
-    <article data-id="${list.id}" class="idea-card">
+    <article data-id="${array.id}" class="idea-card">
       <section class="idea-card-header">
         <img class="star-icon" ${imgCardSrc} alt="favorite Card">
         <img class="delete-icon" src="./src/icons/delete.svg" alt="Delete Card">
       </section>
       <section class="idea-card-body">
         <h3 class="idea-title">
-          ${list.title}
+          ${array.title}
         </h3>
         <p class="idea-body">
-          ${list.body}
+          ${array.body}
         </p>
       </section>
       <section class="idea-card-footer">
@@ -255,7 +254,7 @@ function printIdeaHTML(list, imgCardSrc){
         </button>
       </form>
       <section class="comments">
-      ${printCommentsDiv()}
+      ${printCommentsDiv(array)}
       </section>
     </article>
 
@@ -263,20 +262,15 @@ function printIdeaHTML(list, imgCardSrc){
   ideaCardsGrid.insertAdjacentHTML("afterbegin", ideaCard);
 };
 
-function printCommentsDiv(){
+function printCommentsDiv(array){
   var commentSectionHTML = '';
-  for (var i = 0; i < list.length; i++){
-    if(list[i].comments.length > 0){
-      for (var j = 0; j < list[i].comments.length; j++){
-        console.log('listJ',list[i].comments[j].content)
-        commentSectionHTML += `
-        <div class="one-comment">
-        <h6> ${list[i].comments[j].content} </h6>
-        </div>
-        `
-      }
+  if(array.comments.length > 0){
+    for (var j = 0; j < array.comments.length; j++){
+      commentSectionHTML += `
+      <div class="one-comment">
+      <h6> ${array.comments[j].content} </h6>
+      </div>`
     }
   }
-  console.log(commentSectionHTML)
   return commentSectionHTML
 }
