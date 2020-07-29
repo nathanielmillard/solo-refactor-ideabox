@@ -227,7 +227,7 @@ function buildCommentHTML(areaHTML, newComment) {
   <div class='one-comment'>
   <h6> ${newComment.content} </h6>
   </div>`;
-  areaHTML.insertAdjacentHTML('afterbegin', comment);
+  areaHTML.insertAdjacentHTML('beforeend', comment);
 };
 
 function printIdeaHTML(array, imgCardSrc) {
