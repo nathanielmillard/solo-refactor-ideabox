@@ -180,19 +180,19 @@ function filterIdeas() {
   var searchTerm = event.target.value;
   if (searchTerm !== '') {
     ideaCardsGrid.innerHTML = '';
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].title.includes(searchTerm) || list[i].body.includes(searchTerm)) {
-        var imgCardSrc = '';
-        if (list[i].star){
-          imgCardSrc = `src="./src/icons/star-active.svg"`;
-        } else {
-          imgCardSrc = `src="./src/icons/star.svg"`;
-        }
-      printIdeaHTML(list[i], imgCardSrc);
-      }
-    }
+    displayFilteredIdeaCard(searchTerm);
   } else {
     displayIdeaCards();
+  }
+};
+
+function displayFilteredIdeaCard(searchValue){
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].title.includes(searchValue) || list[i].body.includes(searchValue)) {
+      var imgCardSrc = (list[i].star ?
+        `src="./src/icons/star-active.svg"` : `src="./src/icons/star.svg"`);
+      printIdeaHTML(list[i], imgCardSrc);
+    }
   }
 };
 
