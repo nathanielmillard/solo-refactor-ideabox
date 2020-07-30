@@ -30,9 +30,9 @@ Mobile View Dropdown menu
 
 ### Iteration 3 - Favoriting And Deleting Ideas
 
-![Favorite Card 1](src/read-me-pics/favorite-1.png)
+![Favorite Card 1](src/read-me-pics/Favorite-1.png)
 
-![Favorite Card 2](src/read-me-pics/favorite-2.png)
+![Favorite Card 2](src/read-me-pics/Favorite-2.png)
 
 ### Iteration 4 - Filtering Posters and Local Storage
 
