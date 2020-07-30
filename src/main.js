@@ -185,7 +185,7 @@ function filterIdeas() {
 
 function displayFilteredIdeaCard(searchValue){
   for (var i = 0; i < list.length; i++) {
-    if (list[i].title.includes(searchValue) || list[i].body.includes(searchValue)) {
+    if (list[i].title.toLowerCase().includes(searchValue.toLowerCase()) || list[i].body.toLowerCase().includes(searchValue.toLowerCase())) {
       var imgCardSrc = (list[i].star ?
         `src="./src/icons/star-active.svg"` : `src="./src/icons/star.svg"`);
       printIdeaHTML(list[i], imgCardSrc);
