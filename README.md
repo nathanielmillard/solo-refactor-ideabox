@@ -1,99 +1,85 @@
-# Ideabox Group Project
+# IdeaBox Group Project
 
-Every developer has more ideas than time. As David Allen likes to say "the human brain is for creating ideas, not remembering them." In this project, we'll be building an application a new client that records and archives our ideas (good and bad alike).
+A Javascript project by Nathan Darrington, Nathaniel Millard, Eric Berglund.
 
-Throughout the project, one of our focuses will be on providing a fluid and responsive client-side interface. To this end, we'll rely on JavaScript and to implement snappy filtering in the browser, and `localStorage` to persist our wonderful ideas between sessions.  Our goal is to also incorporate an agile workflow by incorporating two weekly sprints.
+## Introduction
 
-*Note*: Expectations listed for Iteration 0-1 should be complete by your first check-in. No JavaScript should be written before that check-in, unless you get approval to move ahead with functionality from your Project Manager.
-
-## Learning Goals
-
-* Continue to improve on building responsive client-side applications with good user feedback
-* Understand how to implement client-side data persistence using `localStorage`
-* Understand what it looks like to have a separate data model (using a class) and DOM model
-* Utilize `data-*` attributes
-* Incorporate & iterate over arrays in order to filter what is being displayed
-* Craft code with clean style, using small functions that show trends toward DRYness and SRP
-
-## Setup
-
-- Complete a DTR
-- Create a slack channel for all team members and your Project Manager.
-- Fork [the boilerplate
-  repository](https://github.com/turingschool-examples/ideabox-boilerplate). Add all team members and your Project Manager as collaborators.
-- Deploy your application to GitHub Pages.
-- In the team channel, drop the repo link and GitHub pages link.
+This project entailed constructing idea cards that a user could create, save, favorite, comment and delete. The project allows the user to store their idea cards into local storage and on page refresh the data will not be lost unless they clear their local storage or exit the browser entirely. The project spanned approximately eight days.
 
 ## Progression
 
-### Iteration 0 - Desktop Layout
+### Iteration 0 - Mobile View
 
-Plan then write the HTML and CSS so that your application matches this comp. Based on what you are building, you can anticipate that the Idea "cards" will not always be there on page load, but for now, they should.
+Mobile View Normal
 
-Use the same text on your cards that is used in the spec so you can ensure your spacing/sizing is accurate.
+![Mobile View 1](src/read-me-pics/mobile-view-1.png)
 
-![Desktop Layout](https://frontend.turing.io/projects/module-1/assets/ideabox-group/desktop.jpg)
-![Colors](https://frontend.turing.io/projects/module-1/assets/ideabox-group/colors.jpg)
-![Colors](https://frontend.turing.io/projects/module-1/assets/ideabox-group/icons.jpg)
+Mobile View Dropdown menu
 
-You will need the `svg` files for the star, delete, and menu icons. [Here's the link to download the `svg` icons.](https://drive.google.com/drive/folders/18xpWplI0tpXIK1omBZeq04LEx2OMzzMK?usp=sharing)
+![Mobile View 2](src/read-me-pics/mobile-view-2.png)
 
-### Iteration 1 - Mobile Layout
+### Iteration 1 - Desktop View
 
-Now that your Desktop Layout is in place, it's time to write some media queries so this is a responsive site.
+![Desktop View](src/read-me-pics/desktop-view.png)
 
-Full mobile layout:
+### Iteration 2 - Adding Ideas
 
-![Mobile Layout](https://frontend.turing.io/projects/module-1/assets/ideabox-group/mobile.jpg)
+![Add Card 1](src/read-me-pics/add-card-1.png)
 
-Full mobile layout with open navigation:
+![Add Card 2](src/read-me-pics/add-card-2.png)
 
-![Mobile Layout with Dropdown](https://frontend.turing.io/projects/module-1/assets/ideabox-group/mobile-dropdown.jpg)
+### Iteration 3 - Favoriting And Deleting Ideas
 
-### Iteration 2 and beyond
+![Favorite Card 1](src/read-me-pics/favorite-1.png)
 
-After you have completed Iterations 0-1, your Project Manager will provide you with the next iteration.
+![Favorite Card 2](src/read-me-pics/favorite-2.png)
 
-## Rubric
+### Iteration 4 - Filtering Posters and Local Storage
 
-### Functional Expectations
+![Filter Card 1](src/read-me-pics/Filter-1.png)
 
-* **4:** Application meets all of the expectations from Iteration 4 and most functionality from Iteration 5.
-* **3:** Application meets all of the expectations from Iteration 4.
-* **2:** Application meets all of the expectations of Iteration 3.
-* **1:** Application meets all of the expectations of Iteration 2.
+![Filter Card 2](src/read-me-pics/Filter-2.png)
 
-### Comp Recreation
+### Iteration 5 - Adding Comments
 
-* **4:** Additional elements that have been added match the visuals established in the comps. Every little detail was built out thoughtfully - from hover states to placeholders, etc.
-* **3:** Application implements all major comp details accurately and correctly on desktop and mobile (colors, fonts, icons, spacing, alignment, etc.) with **smooth transitions between screen sizes**. Additional elements added generally match the visuals established in the comps, but may be slightly awkward.
-* **2:** Application implements most major comp details accurately and correctly on **desktop and mobile** (colors, fonts, icons, spacing, alignment, etc.). Transitions between screen sizes may not be smooth.
-* **1:** Application implements all major comp details on desktop only (colors, fonts, icons, spacing, alignment, etc.), OR masonry layout is not implemented.
+![Comments Card 1](src/read-me-pics/comments-1.png)
 
-### Git Workflow & Documentation
+![Comments Card 2](src/read-me-pics/comments-2.png)
 
-* **4:** A PR template was used. A code review was requested and completed by a mentor, and all team members can speak to how the feedback in code review was implemented (and point to the commit(s) that implemented the feedback).
-* **3:** Every team member (on a team of 3) authors between 25%-40% of the commits. Most commits are formatted correctly. Every team member contributes to at least 2 meaningful PR conversations. The README is formatted well and contains:
-  - Overview of project and goals
-  - Overview of technologies used, challenges, and wins, any other reflections
-  - Screenshots of comp and your app
-  - Credit all teammates
-* **2:** Every team member (on a team of 3) authors between 20%-45% of the commits. More than a few commits are formatted incorrectly. The README is formatted well but may be lacking in detail.
-* **1:** Commit and PR history does not tell a story of the application OR a README has not been created/has minimal information.
+![Comments Card 2](src/read-me-pics/comments-2.png)
 
-### JavaScript - Style and Implementation
+## Key Concepts and Challenges
 
-* **4:**
-  * All loops are refactored into the proper array prototype iteration methods
-  * Uses logical operators instead of if/else statements where applicable
-  * When 'Filtering and Searching by Text' and 'Viewing Urgent ToDo Cards', to-dos that do not need to be shown on the DOM should be completely removed from the DOM, instead of only being hidden from view
-* **3:**
-  * Application uses the Data Model exclusively to track changes to the ideas,
-    and display of ideas happens after the Data Model has been updated
-  * DRY and SRP practices are demonstrated in codebase and students can speak to implementation decisions
-  * All functions are less than 10 lines
-  * There are no nested if/else statements
-  * There are no global variables aside from query selectors and an array for your to-dos
-  * Uses event delegation correctly on dynamic elements for deleting, checking tasks off, and marking a to-do urgent
-* **2:** Application correctly implements data model for the `Idea` class including all required methods
-* **1:** Crafts JS according to the [Turing JS Style Guide](https://github.com/turingschool-examples/javascript/tree/master/es5)
+1. Local Storage
+
+The challenging part of local storage was deciding how to store the data. At first, we used each Idea's unique ID to store them individually. This made it a little more of a challenge when figuring out how to pull the unique idea out of local storage. After our local storage lesson, we changed to storing the entire list array and this made it easier to target exactly what we wanted pull out of local storage and re-populate the list array.
+
+2. Filtering
+
+The hard part of filtering was learning how to keep the functions concise without nesting `if statements`. This really brought home the concept how powerful parameters and arguments can be when creating your functions. After learning how we could make the function to filter ideas more concise with parameters and arguments, we expanded that lesson to most of our larger functions to make them more versatile and easier to use.
+
+3. Adding Comments
+
+A major challenge we ran into when adding comments was how to target the exact form for the specific comment. Since the section that holds the comments is not visible on page load, we had to learn how to navigate the DOM's parent, sibling and children elements to find the exact elements we wanted to bubble the event listener to. Also, the best way to pull the ideas out of local storage and have them populate onto each individual idea card correctly. We solved this by adding in an extra parameter that accepts the array of comments in the class constructor.
+
+4. Expanded Classes
+
+We learned how powerful it was to create an object form the class and still be able to invoke the methods on the function. Even when we pushed the items into the list array, we could still call each of the methods from the idea class instantiation. This made it great when we needed to delete, update or add an idea from local storage because we could store it in a variable and then invoke the correct function to save the entire array after updating it.
+
+## Links to Authors Repositories
+
+Nathan Darrington [here](https://github.com/npdarrington)
+
+Nathaniel Millard [here](https://github.com/nathanielmillard)
+
+Eric Berglund [here](https://github.com/ericberglund117)
+
+Hannah Hudson
+
+## Acknowledgements
+
+We would like to acknowledge our instructors, Hannah Hudson, Casey DallaValle, and Scott Ertmer for their guidance and help during the course of the project. We would also like to thank the other members the 2006FE cohort for creating a dynamic and inclusive atmosphere which fosters learning and embraces fun while simultaneously undergoing significant challenges and growth. Thank you to our mentors Kim and Eric for a code review mid-way through iteration 4 and after iteration 5!
+
+## Additional information Concerning the Project
+
+Project spec & rubric can be found [here](https://github.com/turingschool-examples/ideabox-boilerplate)
